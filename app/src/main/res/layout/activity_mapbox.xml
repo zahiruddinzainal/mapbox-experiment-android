@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="0dp"
+    android:gravity="center"
+    android:id="@+id/ll">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dashboardText"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:descendantFocusability="blocksDescendants"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="MapBox Navigation."
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/chooseOrigin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="Pick an origin point"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <EditText
+            android:id="@+id/chooseDestination"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="Pick a destination point"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chooseOrigin" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textalert"
+        android:textAlignment="center"
+        android:layout_marginTop="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose origin and destination first" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.mapbox.mapboxsdk.maps.MapView
+                android:id="@+id/mapView"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:mapbox_cameraTargetLat="38.9098"
+                app:mapbox_cameraTargetLng="-77.0295"
+                android:background="#FFFFFF"
+                app:mapbox_cameraZoom="12" >
+
+            </com.mapbox.mapboxsdk.maps.MapView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/backgroundwhite"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/mapView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" >
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Button
+                            android:id="@+id/display"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp"
+                            android:background="@drawable/default_purple_gradient"
+                            android:text="Display"
+                            android:textSize="12dp"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/startNavigation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/default_purple_gradient"
+                            android:text="Navigation"
+                            android:textSize="12dp"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/findDistance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/default_purple_gradient"
+                            android:text="Distance"
+                            android:textSize="12dp"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/findTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="25dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/default_purple_gradient"
+                            android:text="Time"
+                            android:layout_marginEnd="25dp"
+                            android:textSize="12dp"
+                            android:textColor="#FFFFFF"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+</LinearLayout>
